@@ -1,7 +1,7 @@
 package libgomessage
 
 // yes, this file is togo!
-// ba-du-tse
+// ba-dum-tss
 
 import(
 
