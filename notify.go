@@ -33,7 +33,7 @@ func (n *notify) Send(message *Message, to ToInterface) {
 
 	if notifyWindow == nil {
 		e = errors.New("Unable to create a new notification")
-		goto cleanUp
+		goto out
 	}
 
 	notifyWindow.SetTimeout(n.delay)
@@ -43,7 +43,7 @@ func (n *notify) Send(message *Message, to ToInterface) {
 		if glibe.Error() != "" {
 			e = errors.New("Cannot show notification! '" +
 					glibe.Error() + "'")
-			goto cleanUp
+			goto out
 		}
 	}
 
@@ -54,7 +54,6 @@ out:
 		n.result <- &Message{ Result: SUCCESS }
 	}
 
-cleanUp:
 	time.Sleep(time.Duration(n.delay) * time.Millisecond)
 	notifyWindow.Close()
 	notifylib.UnInit()
