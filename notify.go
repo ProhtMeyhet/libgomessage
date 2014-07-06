@@ -72,6 +72,7 @@ func (n *notify) verify(message *Message) error {
 		return errors.New("No message given!")
 	}
 
+/*
 	for _, attachment := range message.Attachments {
 		if x, ok := attachment.(AttachmentLibNotifyInterface); ok {
 			n.delay = x.GetDelay();
@@ -82,7 +83,8 @@ func (n *notify) verify(message *Message) error {
 				n.icon = x.GetIconPath()
 			}
 		}
-	}
+	}*/
+
 	if n.delay <= 0 {
 		//return errors.New("Delay must be greater then 0!")
 		n.delay = 10000

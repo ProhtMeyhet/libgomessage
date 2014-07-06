@@ -40,14 +40,14 @@ func (Xmpp *XmppAndroidpn) GetTo() ToInterface {
 func (Xmpp *XmppAndroidpn) constructXmpp(message *Message) []byte {
 	xmpp := "<Notification namespace=\"androidpn:iq:notification\">"
 	xmpp += "<Id>" + message.Id + "</Id>"
-	for _, attachment := range message.Attachments {
+/*	for _, attachment := range message.Attachments {
 		if x, ok := attachment.(AttachmentApiKeyInterface);  ok {
 		        xmpp += "<ApiKey>" + x.GetApiKey() + "</ApiKey>"
 		}
 		if x, ok := attachment.(AttachmentUriInterface); ok {
 		        xmpp += "<Uri>" + x.GetUri() + "</Uri>"
 		}
-	}
+	}*/
         xmpp += "<Title>" + message.Title + "</Title>"
         xmpp += "<Message>" + message.Message + "</Message>"
 	xmpp += "</Notification>"

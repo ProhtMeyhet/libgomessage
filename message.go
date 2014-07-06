@@ -20,7 +20,7 @@ type Message struct {
 	ErrorString string
 
 	// attachements
-	Attachments []AttachmentInterface
+	//Attachments []AttachmentInterface
 
 
 

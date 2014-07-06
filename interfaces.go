@@ -18,9 +18,6 @@ const(
 	SERVER_STOP = 1
 )
 
-type Authentication struct {
-	//Username:Password:Random
-}
 
 type MessageInterface interface {
 	ConstructMessage() []byte
@@ -46,46 +43,12 @@ type ConnectionHandlerInterface interface {
 	Handle(connection net.Conn) *Message
 }
 
-//type AuthenticationCheckInterface interface {
-//	Acceptable(
-//}
-
-type LoginInformationInterface interface {
-	getUser() string
-	getPassword() string
-	getSalt() string
+type ParseInterface interface {
+	Parse(from *bufio.Reader) *Message
 }
 
-type AttachmentInterface interface {
-	GetAttachmentName() string
-}
-
-type AttachmentToInterface interface {
-	AttachmentInterface
-	GetFrom() string
-	GetTo() []string
-}
-
-type AttachmentIconInterface interface {
-	AttachmentInterface
-	GetIcon() string
-	GetIconPath() string
-	GetIconUri() string
-}
-
-type AttachmentUriInterface interface {
-	AttachmentInterface
-	GetUri() string
-}
-
-type AttachmentLibNotifyInterface interface {
-	AttachmentInterface
-	GetDelay() int32
-}
-
-type AttachmentApiKeyInterface interface {
-	AttachmentInterface
-	GetApiKey() string
+type MessageGeneratorInterface interface {
+	GenerateMessage() []byte
 }
 
 type ToInterface interface {
@@ -105,13 +68,6 @@ type IdInterface interface {
 	Valid(id string) bool
 }
 
-type MessageGeneratorInterface interface {
-	GenerateMessage() []byte
-}
-
-type ParseInterface interface {
-	Parse(from *bufio.Reader) *Message
-}
 
 type SendMessageInterface interface {
 	GetTo() ToInterface
